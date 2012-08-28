@@ -1,0 +1,1 @@
+Search.setIndex({objects:{},terms:{index:[],search:[],welcom:0,modul:[],indic:[],content:0,tabl:[],rosefinch:0,document:0,page:[]},objtypes:{},titles:["Welcome to Rosefinch Documentation&#8217;s documentation!"],objnames:{},filenames:["index"]})
