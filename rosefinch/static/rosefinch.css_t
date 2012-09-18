@@ -407,6 +407,7 @@ abbr, acronym {
 pre {
     overflow: auto;
     overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+    margin: 10px 0 10px 0;
 }
 
 td.linenos pre {
@@ -516,28 +517,45 @@ div.sphinxsidebar {
   margin-left: 0;
 }
 
-div.content {
-  margin-top: 60px;
-}
-
 div.footer {
   text-align: right;
 }
 
-/*
-{%- if not (theme_notextindent | tobool) -%}
-  .article[lang="zh] p.compound-middle,
-  .article[lang="zh] p.compound-last,
-  .article[lang="zh] p.topic-title,
-  .article[lang="zh] p.rubric,
-  .article[lang="zh] table.footnote p,
-  .article[lang="zh] li p.first,
-  .article[lang="zh] li div.first p.compound-first {
-    text-indent: 0;
+{% if not (theme_han_indent | tobool) %}
+  article p:before,
+  article:lang(zh) p:before,
+  article:lang(ja) p:before {
+    content: "";
   }
-{%- endif -%}
-*/
+{% endif %}
 
-a.reference>em {
-  font-style: inherit;
+/* unecessary indentation at the beginning of the <p> tag */
+article p.biglink:before,
+article p.caption:before,
+article p.rubric:before,
+article p.sidebar-title:before,
+article p.topic-title:before,
+article p.admonition-title:before,
+article p.centered:before,
+article dd p:before,
+article .field-list p:before,
+article div.math p:before,
+article p.compound-middle:before,
+article p.compound-last:before,
+article table.footnote p:before,
+article li p.first:before,
+article li div.first p.compound-first:before {
+content: "";
+}
+
+article a.reference em {
+  border: inherit;
+}
+
+article li p.first {
+  line-height: 3;
+}
+
+img.logo {
+  align: center;
 }

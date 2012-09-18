@@ -97,8 +97,9 @@ html_theme = 'rosefinch'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    'paraindent': True,
+    'rightsidebar': False,
     'stickysidebar': False,
-    'siteurl': 'http://liancheng.github.com/rosefinch',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

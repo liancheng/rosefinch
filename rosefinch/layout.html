@@ -1,21 +1,21 @@
 {%- block doctype -%}
 <!DOCTYPE HTML>
-{%- endblock -%}
+{% endblock %}
 
-{%- set script_files = script_files + ["_static/han.min.js"] -%}
-{%- set script_files = script_files + ["_static/bootstrap.min.js"] -%}
+{%- set script_files = ["_static/bootstrap.min.js"] + script_files -%}
+{%- set css_files = ["_static/bootstrap.min.css"] + css_files -%}
 
-{%- set css_files = css_files + ["_static/han.min.css"] -%}
-{%- set css_files = css_files + ["_static/bootstrap.min.css"] -%}
+{%- if theme_han_enabled -%}
+  {%- set script_files = ["_static/han.min.js"] + script_files -%}
+  {%- set css_files = ["_static/han.min.css"] + css_files -%}
+{%- endif -%}
 
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 -%}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 -%}
 
-{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) -%}
-{%- set right_sidebar  = (theme_rightsidebar | tobool) -%}
-{%- set sticky_sidebar = (theme_stickysidebar | tobool) -%}
-{%- set document_span  = render_sidebar and 'span9' or 'span12' -%}
-{%- set language       = language or 'en' -%}
+{%- set sidebar_enabled = (not embedded) and (theme_sidebar_enabled | tobool) and (sidebars != []) -%}
+{%- set sidebar_position = theme_sidebar_position -%}
+{%- set document_span = (pagename == "search" or not sidebar_enabled) and 'span12' or 'span9' -%}
 
 {%- set url_root = pathto('', 1) -%}
 
@@ -35,7 +35,7 @@
     <ul>
       {%- for rellink in rellinks -%}
         <li class="right" {%- if loop.first -%}style="margin-right: 10px"{%- endif -%}>
-          <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}" {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+          <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1] | striptags | e }}" {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
           {%- if not loop.first -%}
             {{ reldelim2 }}
           {%- endif -%}
@@ -51,7 +51,7 @@
 
       {%- for parent in parents -%}
         <li>
-          <a href="{{ parent.link|e }}" {%- if loop.last -%}{{ accesskey("U") }}{%- endif -%}>{{ parent.title }}</a>
+          <a href="{{ parent.link | e }}" {%- if loop.last -%}{{ accesskey("U") }}{%- endif -%}>{{ parent.title }}</a>
           {{ reldelim1 }}
         </li>
       {%- endfor -%}
@@ -63,14 +63,16 @@
 {%- endmacro -%}
 
 {%- macro sidebar() -%}
-  {%- if render_sidebar -%}
+  {%- if sidebar_enabled -%}
     <div class="sphinxsidebar">
       <div class="sphinxsidebarwrapper">
         {%- block sidebarlogo -%}
           {%- if logo -%}
-            <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
-            </a></p>
+            <p class="logo">
+              <a href="{{ pathto(master_doc) }}">
+                <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+              </a>
+            </p>
           {%- endif -%}
         {%- endblock -%}
 
@@ -96,48 +98,46 @@
           {%- if customsidebar -%}
             {%- include customsidebar -%}
           {%- endif -%}
-
-          {%- block sidebarsearch -%}
-            {%- include "searchbox.html" -%}
-          {%- endblock -%}
         {%- endif -%}
       </div>
     </div>
   {%- endif -%}
 {%- endmacro -%}
 
-{%- macro script() -%}
-  <script type="text/javascript">
-    var DOCUMENTATION_OPTIONS = {
-      URL_ROOT:       '{{ url_root }}',
-      VERSION:        '{{ release|e }}',
-      COLLAPSE_INDEX: false,
-      FILE_SUFFIX:    '{{ '' if no_search_suffix else file_suffix }}',
-      HAS_SOURCE:     {{ has_source | lower }}
-    };
-  </script>
+{%- macro script() %}
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:       '{{ url_root }}',
+        VERSION:        '{{ release | e }}',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX:    '{{ '' if no_search_suffix else file_suffix }}',
+        HAS_SOURCE:     {{ has_source | lower }}
+      };
+    </script>
 
-  {%- for scriptfile in script_files -%}
+  {%- for scriptfile in script_files %}
     <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
-  {%- endfor -%}
+  {%- endfor %}
 {%- endmacro -%}
 
 {%- macro css() -%}
+  {%- for cssfile in css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+  {%- endfor %}
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
   <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-  {%- for cssfile in css_files -%}
-    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
-  {%- endfor -%}
 {%- endmacro -%}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+{% block htmltag %}
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+{% endblock %}
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
     {{ metatags }}
 
     {%- block htmltitle -%}
-      <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
-    {%- endblock -%}
+      <title>{{ title | striptags | e }}{{ titlesuffix }}</title>
+    {% endblock -%}
 
     {{ css() }}
 
@@ -148,7 +148,7 @@
         <link
           rel="search"
           type="application/opensearchdescription+xml"
-          title="{%- trans docstitle=docstitle|e -%}Search within {{ docstitle }}{%- endtrans -%}"
+          title="{%- trans docstitle=docstitle | e -%}Search within {{ docstitle }}{%- endtrans -%}"
           href="{{ pathto('_static/opensearch.xml', 1) }}"/>
       {%- endif -%}
 
@@ -157,7 +157,7 @@
       {%- endif -%}
     {%- endif -%}
 
-    {%- block linktags -%}
+    {% block linktags %}
       {%- if hasdoc('about') -%}
         <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
       {%- endif -%}
@@ -174,20 +174,20 @@
         <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
       {%- endif -%}
 
-      <link rel="top" title="{{ docstitle|e }}" href="{{ pathto('index') }}" />
+      <link rel="top" title="{{ docstitle | e }}" href="{{ pathto('index') }}" />
 
       {%- if parents -%}
-        <link rel="up" title="{{ parents[-1].title|striptags|e }}" href="{{ parents[-1].link|e }}" />
+        <link rel="up" title="{{ parents[-1].title | striptags | e }}" href="{{ parents[-1].link | e }}" />
       {%- endif -%}
 
       {%- if next -%}
-        <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+        <link rel="next" title="{{ next.title | striptags | e }}" href="{{ next.link | e }}" />
       {%- endif -%}
 
       {%- if prev -%}
-        <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+        <link rel="prev" title="{{ prev.title | striptags | e }}" href="{{ prev.link | e }}" />
       {%- endif -%}
-    {%- endblock -%}
+    {% endblock %}
 
     {%- block extrahead -%}
     {%- endblock -%}
@@ -198,19 +198,22 @@
     {%- endblock -%}
 
     {%- block relbar1 -%}
-      <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar navbar-static-top navbar-inverse">
         <div class="navbar-inner">
-          <div class="container-fluid">
-            <a href="{{ pathto('index') }}" class="brand">{{ docstitle | e }}</a>
-            <ul class="nav">
-              {%- if next -%}
-                <li><a href="{{ next.link }}">{{ _('next') }}</a></li>
-              {%- endif -%}
-              {%- if prev -%}
-                <li><a href="{{ prev.link }}">{{ _('previous') }}</a></li>
-              {%- endif -%}
-            </ul>
-          </div>
+          <a href="{{ pathto('index') }}" class="brand">{{ docstitle | e }}</a>
+          <ul class="nav">
+            {%- if next -%}
+              <li><a href="{{ next.link }}">{{ _('next') }}</a></li>
+            {%- endif -%}
+            {%- if prev -%}
+              <li><a href="{{ prev.link }}">{{ _('previous') }}</a></li>
+            {%- endif -%}
+          </ul>
+          <form class="navbar-search pull-right" action="{{ pathto('search') }}" method="get">
+            <input type="text" name="q" placeholder="{{ _('Go') }}" class="search-query" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
         </div>
       </div>
     {%- endblock -%}
@@ -219,11 +222,9 @@
       <div class="content container-fluid">
         <div class="row-fluid">
           {%- block sidebar1 -%}
-            {%- if render_sidebar and (not right_sidebar) -%}
+            {%- if pagename != "search" and sidebar_enabled and (sidebar_position == 'left') -%}
               <div class="span3">
-                {%- if sticky_sidebar -%}<div class="affix">{%- endif -%}
                 {{ sidebar() }}
-                {%- if sticky_sidebar -%}</div>{%- endif -%}
               </div>
             {%- endif -%}
           {%- endblock -%}
@@ -251,11 +252,9 @@
           </div>
 
           {%- block sidebar2 -%}
-            {%- if render_sidebar and right_sidebar -%}
+            {%- if pagename != "search" and sidebar_enabled and sidebar_position == 'right' -%}
               <div class="span3">
-                {%- if sticky_sidebar -%}<div class="affix">{%- endif -%}
                 {{ sidebar() }}
-                {%- if sticky_sidebar -%}</div>{%- endif -%}
               </div>
             {%- endif -%}
           {%- endblock -%}
@@ -272,18 +271,18 @@
 
         {%- if show_copyright -%}
           {%- if hasdoc('copyright') -%}
-            {%- trans path=pathto('copyright'), copyright=copyright|e -%}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{%- endtrans -%}
+            {%- trans path=pathto('copyright'), copyright=copyright | e -%}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{%- endtrans -%}
           {%- else -%}
-            {%- trans copyright=copyright|e -%}&copy; Copyright {{ copyright }}.{%- endtrans -%}
+            {%- trans copyright=copyright | e -%}&copy; Copyright {{ copyright }}.{%- endtrans -%}
           {%- endif -%}
         {%- endif -%}
 
         {%- if last_updated -%}
-          {%- trans last_updated=last_updated|e -%}Last updated on {{ last_updated }}.{%- endtrans -%}
+          {%- trans last_updated=last_updated | e -%}Last updated on {{ last_updated }}.{%- endtrans -%}
         {%- endif -%}
 
         {%- if show_sphinx -%}
-          {%- trans sphinx_version=sphinx_version|e -%}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{%- endtrans -%}
+          {%- trans sphinx_version=sphinx_version | e -%}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{%- endtrans -%}
         {%- endif -%}
       </div>
     {%- endblock -%}

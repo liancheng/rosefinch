@@ -1,6 +1,4 @@
 {%- if display_toc -%}
-  <ul class="nav nav-list">
-    <li class="nav-header">{{ _('Table Of Contents') }}</li>
-    {{ toc }}
-  </ul>
+  <h4><a href="{{ pathto('index') }}">{{ _('Table Of Contents') }}</a></h4>
+  {{ toc }}
 {%- endif -%}

@@ -1,7 +1,7 @@
 Sphinx主题——朱雀
 ================
 
-“朱雀（rosefinch）”是一款基于\ `Twitter Bootstrap`__\ 的\ `Sphinx`__\ 主题。通过集成由\ `@ethantw`__\ 开发的“\ `汉字标准格式`__\ ”CSS框架，“朱雀”优化了汉字的网页显示效果。
+“朱雀（rosefinch）”是一款基于\ `Twitter Bootstrap`__\ 的\ `Sphinx`__\ 主题，它集成了由\ `@ethantw`__\ 开发的“\ `汉字标准格式`__\ ”CSS框架，从而优化了\ **汉字**\ 的\ *网页显示*\ 效果。
 
 .. note::
 
