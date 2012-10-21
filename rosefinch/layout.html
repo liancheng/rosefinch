@@ -17,6 +17,8 @@
 {%- set sidebar_position = theme_sidebar_position -%}
 {%- set document_span = (pagename == "search" or not sidebar_enabled) and 'span12' or 'span9' -%}
 
+{%- set search_enabled = (theme_search_enabled | tobool) -%}
+
 {%- set url_root = pathto('', 1) -%}
 
 {%- if url_root == '#' -%}
@@ -209,11 +211,13 @@
               <li><a href="{{ prev.link }}">{{ _('previous') }}</a></li>
             {%- endif -%}
           </ul>
-          <form class="navbar-search pull-right" action="{{ pathto('search') }}" method="get">
-            <input type="text" name="q" placeholder="{{ _('Go') }}" class="search-query" />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
-          </form>
+          {%- if search_enabled -%}
+            <form class="navbar-search pull-right" action="{{ pathto('search') }}" method="get">
+              <input type="text" name="q" placeholder="{{ _('Go') }}" class="search-query" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+          {%- endif -%}
         </div>
       </div>
     {%- endblock -%}
