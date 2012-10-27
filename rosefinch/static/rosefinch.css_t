@@ -71,10 +71,14 @@ img.logo {
 }
 
 tt,
-a.footer-reference {
+a.footnote-reference {
   padding: 0 3px 0 3px;
 }
 
 .unsure {
   background-color: yellow;
+}
+
+.highlight pre {
+  margin-top: 10px;
 }
