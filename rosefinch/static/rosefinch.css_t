@@ -2,6 +2,10 @@
 
 /* -- Rosefince specific styles --------------------------------------------- */
 
+article p, article li {
+  text-align: left;
+}
+
 /* Resets field list style */
 table.field-list td, table.field-list th {
   text-align: left;
@@ -56,6 +60,7 @@ div.sphinxsidebar {
 
 div.footer {
   text-align: right;
+  margin-bottom: 20px;
 }
 
 article a.reference em {
