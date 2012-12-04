@@ -1,89 +1,133 @@
-
 <!DOCTYPE HTML>
 
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sphinx主题——朱雀 &mdash; Rosefinch (朱雀)</title>
     
-    <title>Welcome to Rosefinch Documentation’s documentation! &mdash; Rosefinch (朱雀)</title>
-    
-    <link rel="stylesheet" href="_static/rosefinch.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/han.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap.min.css" type="text/css" />
-    
+  <link rel="stylesheet" href="_static/rosefinch.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0.0',
+        URL_ROOT:       '',
+        VERSION:        '1.0.0',
         COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        FILE_SUFFIX:    '.html',
+        HAS_SOURCE:     true
       };
     </script>
+    <script type="text/javascript" src="_static/han.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/bootstrap.min.js"></script>
-    <link rel="top" title="Rosefinch (朱雀)" href="#" /> 
-  </head>
-  <body><div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a href="#" class="brand">Rosefinch (朱雀)</a>
-        <ul class="nav"></ul>
-      </div>
-    </div>
-  </div><div class="content container-fluid">
-    <div class="row-fluid">
-      
+    <script type="text/javascript" src="_static/doctools.js"></script><link rel="top" title="Rosefinch (朱雀)" href="#" /></head>
 
-    <div class="document"><div class="span9">
-    
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="welcome-to-rosefinch-documentation-s-documentation">
-<h1>Welcome to Rosefinch Documentation&#8217;s documentation!<a class="headerlink" href="#welcome-to-rosefinch-documentation-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul class="simple">
+  <body><div class="navbar navbar-static-top navbar-inverse">
+        <div class="navbar-inner">
+          <a href="#" class="brand">Rosefinch (朱雀)</a>
+          <ul class="nav"></ul></div>
+      </div><div class="content container-fluid">
+        <div class="row-fluid"><div class="document span9"><article lang="zh">
+                <div class="documentwrapper"><div class="body"><div class="section" id="sphinx">
+<h1>Sphinx主题——朱雀<a class="headerlink" href="#sphinx" title="永久链接至标题">¶</a></h1>
+<p>“朱雀（rosefinch）”是一款基于<a class="reference external" href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>的<a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a>主题，它集成了由<a class="reference external" href="http://twitter.com/ethantw/">&#64;ethantw</a>开发的“<a class="reference external" href="http://ethantw.net/projects/han/">汉字标准格式</a>”CSS框架，从而优化了汉字的网页显示效果。</p>
+<div class="alert alert-block admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">本主题尚在开发中，暂不推荐使用。</p>
+</div>
+<div class="compound">
+<p class="compound-first">“朱雀”这个名字取自该主题的三个要素：</p>
+<ul class="compound-last simple">
+<li>希腊神话怪物斯芬克斯（Sphinx）</li>
+<li>鸟（Twitter）</li>
+<li>中文文档优化</li>
 </ul>
 </div>
 </div>
-
-
-          </div>
-        </div>
-      </div>
-  </div><div class="span3">
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="#">
-              <img class="logo" src="_static/rosefinch.jpg" alt="Logo"/>
-            </a></p><ul class="nav nav-list">
-    <li class="nav-header">This Page</li>
-    <ul>
-      <li><a href="_sources/index.txt" rel="nofollow">Show Source</a></li>
-    </ul>
-  </ul><ul class="nav nav-list">
-    <li class="divider"></li>
-    <form action="http://www.google.com/search" method="get" class="form-search">
-      <input type="text" name="as_q" placeholder="Go" class="search-query span12" />
-      <input type="hidden" name="sitesearch" value="http://liancheng.github.com/rosefinch" />
-    </form>
-  </ul>
-        </div>
-      </div></div>
-      <div class="clearer"></div>
+<div class="section" id="id1">
+<h1>主题选项<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>Rosefinch主题的选项包括：</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">sidebar_enabled</span></tt></dt>
+<dd><p class="first">是否开启侧边栏。取值：</p>
+<div class="last compound">
+<ul class="compound-first simple">
+<li><tt class="docutils literal"><span class="pre">true</span></tt>：开启</li>
+<li><tt class="docutils literal"><span class="pre">false</span></tt>：关闭</li>
+</ul>
+<p class="compound-last">默认为<tt class="docutils literal"><span class="pre">true</span></tt>。</p>
+</div>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">sidebar_position</span></tt></dt>
+<dd><p class="first">侧边栏位置，当<tt class="docutils literal"><span class="pre">sidebar_enabled</span></tt>为<tt class="docutils literal"><span class="pre">false</span></tt>时该选项无效。取值：</p>
+<div class="last compound">
+<ul class="compound-first simple">
+<li><tt class="docutils literal"><span class="pre">left</span></tt>：左侧</li>
+<li><tt class="docutils literal"><span class="pre">right</span></tt>：右侧</li>
+</ul>
+<p class="compound-last">默认为<tt class="docutils literal"><span class="pre">right</span></tt>。</p>
+</div>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">han_enabled</span></tt></dt>
+<dd><p class="first">是否开启简/繁/日汉字显示效果优化。取值：</p>
+<div class="last compound">
+<ul class="compound-first simple">
+<li><tt class="docutils literal"><span class="pre">true</span></tt>：开启</li>
+<li><tt class="docutils literal"><span class="pre">false</span></tt>：关闭</li>
+</ul>
+<p class="compound-last">默认为<tt class="docutils literal"><span class="pre">true</span></tt>。</p>
+</div>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">han_indent</span></tt></dt>
+<dd><p class="first">是否开启汉字首行缩进，当<tt class="docutils literal"><span class="pre">han_eanbled</span></tt>为<tt class="docutils literal"><span class="pre">false</span></tt>时无效。取值：</p>
+<div class="last compound">
+<ul class="compound-first simple">
+<li><tt class="docutils literal"><span class="pre">true</span></tt>：开启</li>
+<li><tt class="docutils literal"><span class="pre">false</span></tt>：关闭</li>
+</ul>
+<p class="compound-last">默认为<tt class="docutils literal"><span class="pre">true</span></tt>。</p>
+</div>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">search_enabled</span></tt></dt>
+<dd><p class="first">是否开启搜索功能。取值：</p>
+<div class="last compound">
+<ul class="compound-first simple">
+<li><tt class="docutils literal"><span class="pre">true</span></tt>：开启</li>
+<li><tt class="docutils literal"><span class="pre">false</span></tt>：关闭</li>
+</ul>
+<p class="compound-middle">默认为<tt class="docutils literal"><span class="pre">false</span></tt>。</p>
+<div class="compound-last admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">由于汉字分词功能尚未开发，暂时禁用本主题的搜索功能。对于部署到线上的文档，可以考虑利用Google的site search代替Sphinx的搜索功能。</p>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div></div>
+              </article><div class="clearer"></div>
+          </div><div class="span3">
+                <div class="sphinxsidebar">
+      <div class="sphinxsidebarwrapper"><p class="logo">
+              <a href="#">
+                <img class="logo" src="_static/rosefinch.jpg" alt="Logo"/>
+              </a>
+            </p><h4><a href="#">內容目录</a></h4>
+  <ul>
+<li><a class="reference internal" href="#">Sphinx主题——朱雀</a></li>
+<li><a class="reference internal" href="#id1">主题选项</a></li>
+</ul>
+<h4>本页</h4>
+  <ul>
+    <li>
+      <a href="_sources/index.txt" rel="nofollow">显示源代码</a>
+    </li>
+  </ul></div>
     </div>
-    </div>
-  </div><hr />
-  
-    <div class="footer">
-        &copy; Copyright 2012, 连城.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
-  </body>
+              </div></div>
+      </div><div class="footer container-fluid">
+        <hr />&copy; 版权所有 2012, 连城.使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.</div></body>
 </html>

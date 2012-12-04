@@ -1,5 +1,11 @@
 @import url("basic.css");
 
+/* -- Rosefince specific styles --------------------------------------------- */
+
+article p, article li {
+  text-align: left;
+}
+
 /* Resets field list style */
 table.field-list td, table.field-list th {
   text-align: left;
@@ -21,28 +27,57 @@ table.footnote .label {
           border-radius: inherit;
 }
 
+
+
+/* Remove unecessary indentation */
+article dd p.first:before,
+article div.math p:before,
+article .field-list p:before,
+article li div.first p.compound-first:before,
+article li p.first:before,
+article p.admonition-title:before,
+article p.biglink:before,
+article p.caption:before,
+article p.centered:before,
+article p.compound-last:before,
+article p.compound-middle:before,
+article p.rubric:before,
+article p.sidebar-title:before,
+article p.topic-title:before,
+article table.footnote p:before {
+  content: "";
+}
+
 div.sphinxsidebar {
   margin-left: 0;
 }
 
-div.content {
-  margin-top: 40px;
-}
-
 div.footer {
   text-align: right;
-}.body p {
-    text-indent: 2em;
-  }
+  margin-bottom: 20px;
+}
 
-  .body p.compound-middle,
-  .body p.compound-last,
-  .body p.topic-title,
-  .body p.rubric,
-  .body table.footnote p,
-  .body li p.first,
-  .body li div.first p.compound-first {
-    text-indent: 0;
-  }a.reference>em {
-  font-style: inherit;
+article a.reference em {
+  border: inherit;
+}
+
+article li p.first {
+  line-height: 3;
+}
+
+img.logo {
+  align: center;
+}
+
+tt,
+a.footnote-reference {
+  padding: 0 3px 0 3px;
+}
+
+.unsure {
+  background-color: yellow;
+}
+
+.highlight pre {
+  margin-top: 10px;
 }
