@@ -71,7 +71,8 @@ Rosefinch主题的选项包括：
 
         默认为\ ``false``\ 。
 
-        .. note::
+        .. attention::
+            :class: alert alert-info
 
             由于汉字分词功能尚未开发，暂时禁用本主题的搜索功能。对于部署到线上的文档，可以考虑利用Google的site search代替Sphinx的搜索功能。
 
