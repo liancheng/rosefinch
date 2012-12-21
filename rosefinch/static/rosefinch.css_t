@@ -84,6 +84,6 @@ a.footnote-reference {
   background-color: yellow;
 }
 
-.highlight pre {
+div[class^="highlight"] pre {
   margin-top: 10px;
 }
